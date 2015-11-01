@@ -1,30 +1,31 @@
 <?php
+// Check for empty fields
+// if(empty($_POST['name'])  		||
+//    empty($_POST['email']) 		||
+//    empty($_POST['phone']) 		||
+//    empty($_POST['message'])	||
+//    !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
+//    {
+// 	echo "No arguments Provided!";
+// 	return false;
+//    }
+	
+// $name = $_POST['name'];
+// $email_address = $_POST['email'];
+// $phone = $_POST['phone'];
+// $message = $_POST['message'];
 
-$mail_to = 'msd88@drexel.edu';
-$subject = http://'something.com | Contact';
-
-$body_message = 'From: '. $_POST['name'] . "\n";
-$body_message .= 'Email: '. $_POST['email'] . "\n";
-$body_message .= 'Phone: '. $_POST['phone'] . "\n";
-$body_message .= 'Message: '. $_POST['message'] . "\n";
-
-$headers = 'From: '.$_POST['contactEmail']."\r\n";
-$headers .= 'Reply-To: '.$_POST['contactEmail']."\r\n";
-
-$mail_status = mail($mail_to, $subject, $body_message, $headers);
-
-if ($mail_status) { ?>
-<script language="javascript" type="text/javascript">
-alert('Thank you for the message. We will contact you shortly.');
-window.location = 'index.php';
-</script>
-<?php
-}
-else { ?>
-<script language="javascript" type="text/javascript">
-alert('Message failed. Please, send an email to proatservers@gmail.com');
-window.location = 'contact.php';
-</script>
-<?php
-}
+$name = "Hello"
+$email_address = "test@test.test"
+$phone = "5555555555"
+$message = "hello world"
+	
+// Create the email and send the message
+$to = 'msd88@drexel.edu'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
+$email_subject = "Website Contact Form:  $name";
+$email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
+$headers = "From: noreply@matthewdamore.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
+$headers .= "Reply-To: $email_address";	
+mail($to,$email_subject,$email_body,$headers);
+return true;			
 ?>
