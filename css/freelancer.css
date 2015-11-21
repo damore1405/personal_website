@@ -12,7 +12,9 @@
 body {
     overflow-x: hidden;
 }
-
+.profile_pic {
+  max-width: 50%;
+}
 .navbar-header {
     background-color: #343D4C;
 }
